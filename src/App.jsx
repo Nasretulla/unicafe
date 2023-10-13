@@ -7,47 +7,55 @@ const Button = ({handleClick, text}) =>{
     <>
     <button onClick = {handleClick}>{text}</button>
     </>
-  )
+  );
+  
 }
+
+
 
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [total, setTotal] = useState(0)
 
 
-  const counterGood = () =>  setGood(good +1)
-  const counterBad = () => setBad (bad +1)
-  const counterNeutral = () => setNeutral(neutral +1)
+ 
+
+  
 
   const handleGoodClick = () => {
-    setAll(allClicks.concat('Good'))
-    const updateGood = counterGood + 1
-    setGood(updateGood)
+   
+    
+    setGood(good + 1)
+    setTotal(total + 1)
   
   }
 
   const handleBadClick =() => {
-    setAll(allClicks.concat('Bad'))
-    const updatedBAd = counterBad + 1
-    setBad(updatedBAd)
+   
+    
+    setBad(bad + 1)
+    setTotal (total + 1)
   }
 
   const handleNeutralClick = () => {
-    setAll(allClicks.concat(''))
-    const updatedNeutral = counterNeutral +1
-    setNeutral(updatedNeutral)
+    
+    setNeutral(neutral +1)
+    setTotal(total + 1)
   }
+
+ 
 
   return (
     <>
      <h1>Give Feedback</h1>
      
      
-     <Button handleClick={counterGood} text="Good" />
-     <Button handleClick={counterBad} text="Bad" />
-     <Button handleClick={counterNeutral} text="Neutral" />
+     <Button handleClick={handleGoodClick} text="Good" />
+     <Button handleClick={handleBadClick} text="Bad" />
+     <Button handleClick={handleNeutralClick} text="Neutral" />
 
 
      <h1>Statistics</h1>
@@ -56,6 +64,10 @@ const App = () => {
      neutral {neutral}
      <br/>
      bad {bad}
+
+     <br/>
+     all {total}
+ 
      
     </>
   )
