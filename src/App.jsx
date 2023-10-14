@@ -10,20 +10,15 @@ const Button = ({handleClick, text}) =>{
   );
   
 }
-
-
-
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const [total, setTotal] = useState(0)
-
-
  
-
   
+ 
 
   const handleGoodClick = () => {
    
@@ -32,10 +27,7 @@ const App = () => {
     setTotal(total + 1)
   
   }
-
-  const handleBadClick =() => {
-   
-    
+  const handleBadClick =() => { 
     setBad(bad + 1)
     setTotal (total + 1)
   }
@@ -45,14 +37,13 @@ const App = () => {
     setNeutral(neutral +1)
     setTotal(total + 1)
   }
+   const average = total > 0 ? ((good - bad) / total) : 0;
+   const positivePercentage = total > 0 ? (good / total) * 100 : 0;
 
- 
 
   return (
     <>
      <h1>Give Feedback</h1>
-     
-     
      <Button handleClick={handleGoodClick} text="Good" />
      <Button handleClick={handleBadClick} text="Bad" />
      <Button handleClick={handleNeutralClick} text="Neutral" />
@@ -64,9 +55,12 @@ const App = () => {
      neutral {neutral}
      <br/>
      bad {bad}
-
      <br/>
      all {total}
+     <br/>
+     average {average}
+     <br/>
+     positive {positivePercentage} %
  
      
     </>
