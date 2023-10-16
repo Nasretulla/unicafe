@@ -11,15 +11,17 @@ const Button = ({handleClick, text}) =>{
 
 const Statistics = ( {good, bad, neutral, total}) =>{
 
-  console.log("tämä on testi statistics");
-  
-    
+  if(total == 0){
+    return <p>No feedback given</p>
+
+  }
+
   const average = total > 0 ? ((good - bad) / total) : 0;
   const positivePercentage = total > 0 ? (good / total) * 100 : 0; 
 
   return (
     <>
-     <h1>Statistics</h1>
+    
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
@@ -62,7 +64,7 @@ const App = () => {
      <Button handleClick={handleBadClick} text="Bad" />
      <Button handleClick={handleNeutralClick} text="Neutral" />
 
-    
+     <h1>Statistics</h1>
 
      <Statistics good={good}  bad= {bad} neutral={neutral}  total={total}
 
